@@ -292,12 +292,10 @@ searchContainer.addEventListener('submit', (e) => {
         newArray.push(element)
     })
     newArray.forEach(user => {
-        console.log(user.lastElementChild.firstElementChild)
         const isVisible =
         user.lastElementChild.firstElementChild.getAttribute('value').toLowerCase().includes(inputSearch.value) ||
             user.lastElementChild.firstElementChild.id.toLowerCase().includes(inputSearch.value)
             const modal = document.getElementById(`${user.lastElementChild.firstElementChild.getAttribute('value')} ${user.lastElementChild.firstElementChild.id}`)
-            console.log(modal)
             if (!isVisible) {
                 body.appendChild(modal)
                 body.appendChild(user)
