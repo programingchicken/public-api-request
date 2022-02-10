@@ -131,6 +131,10 @@ header h1 {
     background: rgba(0, 0, 0, 0.7);
 }
 
+.hide {
+    display: 'none'
+}
+
 .modal {
     position: relative;
     width: 95%;
@@ -256,4 +260,16 @@ header h1 {
         background: rgba(255, 255, 255, 1);
         color: rgba(25, 25, 25, 1); 
     }
+}
+
+header {
+    background-color: cadetblue;
+}
+
+.gallery {
+    background-color: grey;
+}
+
+#body {
+    background-color: grey;
 }

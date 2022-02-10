@@ -18,13 +18,37 @@ const newModelDiv = document.createElement('div')
 body.insertBefore(newModelDiv, script)
 newModelDiv.setAttribute('class', 'modal-container')
 
+
+
+const searchContainer = document.querySelector('.search-container')
+
+
+searchContainer.innerHTML =
+    `
+    <form id='form' action="#" method="get">
+        <input type="search" id="search-input" class="search-input" placeholder="Search...">
+        <input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">
+    </form> 
+    `
+const form = document.getElementById('form')
+const inputSearch = document.getElementById('search-input')
+const inputSubmit = document.getElementById('search-submit')
+
+
+// searchContainer.appendChild(form)
+// form.appendChild(inputSearch)
+// form.appendChild(inputSubmit)
+// form.setAttribute('class', 'card-img')
+
+
 //generates page info
 function generateInfo(info) {
 
     //creates card container 
     const newCard = document.createElement('div')
     galleryDiv.appendChild(newCard)
-    newCard.setAttribute('class', 'card')
+    newCard.setAttribute('class', `card`)
+    newCard.setAttribute('value', `${info.name.first}`)
 
     //creates img container
     const cardImgContainer = document.createElement('div')
@@ -48,7 +72,8 @@ function generateInfo(info) {
     const newCardName = document.createElement('h3')
     newCardName.setAttribute('class', 'card-name cap')
     newCardName.textContent = `${info.name.first} ${info.name.last}`
-    newCardName.setAttribute('id', `${newCardName.textContent}`);
+    newCardName.setAttribute('id', `${info.name.first}`);
+    newCardName.setAttribute('value', `${info.name.last}`);
     cardInfoContainer.appendChild(newCardName)
 
 
@@ -137,18 +162,37 @@ function generateInfoModal(info) {
     birthDay.setAttribute('class', 'modal-text')
     newModelContainer.appendChild(birthDay)
 
+    //next and past
+    const nextPastDiv = document.createElement('div')
+    const next = document.createElement('button')
+    const past = document.createElement('button')
+    next.textContent = "NEXT"
+    past.textContent = "PREV"
+    nextPastDiv.setAttribute('class', 'modal-btn-container')
+    past.setAttribute('class', 'modal-prev btn')
+    past.setAttribute('id', 'modal-prev')
+    past.setAttribute('type', 'button')
+    next.setAttribute('class', 'modal-next btn')
+    next.setAttribute('id', 'modal-next')
+    next.setAttribute('type', 'button')
+    model.appendChild(nextPastDiv)
+    nextPastDiv.appendChild(past)
+    nextPastDiv.appendChild(next)
+
+
     newModelDiv.style.display = 'none'
     model.style.display = 'none'
 }
 
 //generates info from profile api
 async function profile(url) {
-    await fetchData(url)
-        .then(data => generateInfo(data))
+    //gets all 12 profiles
+    for (let i = 0; i < 12; i++) {
+        await fetchData(url)
+            .then(data => generateInfo(data))
+    }
 }
-
-
-
+profile('https://randomuser.me/api/')
 
 
 //click on the card EventListener
@@ -223,34 +267,88 @@ galleryDiv.addEventListener('click', (e) => {
         modal.style.display = '';
         console.log('yay')
 
-      //location
+        //location
     } else if (card.className === 'card-text cap') {
         const cardInfoContainer = card.parentNode
         const name = cardInfoContainer.childNodes[0]
         const first = name.textContent.split(' ')[0]
         const last = name.textContent.split(' ')[1]
         const modal = document.getElementById(`${last} ${first}`)
+
         newModelDiv.style.display = ''
         modal.style.display = '';
         console.log('yay')
-    }else {
+    } else {
         console.log('no card')
     }
 })
 
-//gets all 12 profiles
-for (let i = 0; i < 12; i++) {
-    profile('https://randomuser.me/api/')
+//searchContainer
+searchContainer.addEventListener('submit', (e) => {
+    e.preventDefault
+    const cardList = document.querySelectorAll('.card')
+    const newArray = []
+    cardList.forEach(element => {
+        newArray.push(element)
+    })
+    newArray.forEach(user => {
+        console.log(user.lastElementChild.firstElementChild)
+        const isVisible =
+        user.lastElementChild.firstElementChild.getAttribute('value').toLowerCase().includes(inputSearch.value) ||
+            user.lastElementChild.firstElementChild.id.toLowerCase().includes(inputSearch.value)
+            const modal = document.getElementById(`${user.lastElementChild.firstElementChild.getAttribute('value')} ${user.lastElementChild.firstElementChild.id}`)
+            console.log(modal)
+            if (!isVisible) {
+                body.appendChild(modal)
+                body.appendChild(user)
+                user.style.display = 'none'
+                
+            } else if (inputSearch.value==="") {
+                galleryDiv.appendChild(user)
+                newModelDiv.appendChild(modal)
+                user.style.display = ''
+            } else {
+                galleryDiv.appendChild(user)
+                newModelDiv.appendChild(modal)
+                user.style.display = ''
+            }
+    })
+})
 
-}
 
 
-//gets rid of the expanded profile 
+
+//gets rid of the expanded profile / also checks for next and prev button clicks
 newModelDiv.addEventListener('click', (e) => {
-    if (e.target.tagName === 'BUTTON') {
-        newModelDiv.style.display = 'none'
-        const model = document.querySelectorAll(`.modal`)
-        for (let i = 0; i < model.length; i++)
-            model[i].style.display = 'none'
+    const button = e.target
+    if (button.tagName === 'BUTTON') {
+        if (button.textContent === "NEXT") {
+            const modal = button.parentNode.parentNode
+            modal.style.display = 'none'
+            const nextModal = modal.nextElementSibling
+            if (nextModal === null) {
+                const holdAllModal = modal.parentNode
+                const fixModal = holdAllModal.firstElementChild
+                fixModal.style.display = ''
+            } else {
+                nextModal.style.display = ''
+            }
+        } else if (button.textContent === "PREV") {
+            const modal = button.parentNode.parentNode
+            modal.style.display = 'none'
+            const prevModal = modal.previousElementSibling
+            if (prevModal === null) {
+                const holdAllModal = modal.parentNode
+                const fixModal = holdAllModal.lastElementChild
+                fixModal.style.display = ''
+            } else {
+                prevModal.style.display = ''
+            }
+        } else {
+            newModelDiv.style.display = 'none'
+            const model = document.querySelectorAll(`.modal`)
+            for (let i = 0; i < model.length; i++)
+                model[i].style.display = 'none'
+        }
     }
 })
