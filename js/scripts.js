@@ -23,6 +23,7 @@ newModelDiv.setAttribute('class', 'modal-container')
 const searchContainer = document.querySelector('.search-container')
 
 
+//search bar
 searchContainer.innerHTML =
     `
     <form id='form' action="#" method="get">
@@ -186,11 +187,13 @@ function generateInfoModal(info) {
 
 //generates info from profile api
 async function profile(url) {
+    galleryDiv.style.display = "none"
     //gets all 12 profiles
     for (let i = 0; i < 12; i++) {
         await fetchData(url)
             .then(data => generateInfo(data))
     }
+    galleryDiv.style.display = ""
 }
 profile('https://randomuser.me/api/')
 
