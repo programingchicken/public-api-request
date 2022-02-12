@@ -7,7 +7,8 @@ let modalCloseBtn = document.querySelectorAll('#modal-close-btn')
 function fetchData(url) {
     return fetch(url)
         .then(res => res.json())
-        .then(res => this.data = res.results[0])
+
+
 }
 
 const script = document.getElementById('script')
@@ -159,7 +160,10 @@ function generateInfoModal(info) {
 
     //creates birthday in model
     const birthDay = document.createElement('p')
-    birthDay.textContent = info.dob.date
+    const dob = JSON.stringify(info.dob.date)
+
+    console.log(info.dob.date)
+    birthDay.textContent = dob.slice(1, 11)
     birthDay.setAttribute('class', 'modal-text')
     newModelContainer.appendChild(birthDay)
 
@@ -187,15 +191,20 @@ function generateInfoModal(info) {
 
 //generates info from profile api
 async function profile(url) {
+    let arr 
+    let i = 0
     galleryDiv.style.display = "none"
     //gets all 12 profiles
-    for (let i = 0; i < 12; i++) {
-        await fetchData(url)
-            .then(data => generateInfo(data))
-    }
+    await fetchData(url)
+        .then(data => arr = data.results)
+    arr.forEach(data => {
+        console.log(arr[i])
+        generateInfo(arr[i])
+        i++
+    })
     galleryDiv.style.display = ""
 }
-profile('https://randomuser.me/api/')
+profile('https://randomuser.me/api/?results=12')
 
 
 //click on the card EventListener
@@ -296,23 +305,23 @@ searchContainer.addEventListener('submit', (e) => {
     })
     newArray.forEach(user => {
         const isVisible =
-        user.lastElementChild.firstElementChild.getAttribute('value').toLowerCase().includes(inputSearch.value) ||
+            user.lastElementChild.firstElementChild.getAttribute('value').toLowerCase().includes(inputSearch.value) ||
             user.lastElementChild.firstElementChild.id.toLowerCase().includes(inputSearch.value)
-            const modal = document.getElementById(`${user.lastElementChild.firstElementChild.getAttribute('value')} ${user.lastElementChild.firstElementChild.id}`)
-            if (!isVisible) {
-                body.appendChild(modal)
-                body.appendChild(user)
-                user.style.display = 'none'
-                
-            } else if (inputSearch.value==="") {
-                galleryDiv.appendChild(user)
-                newModelDiv.appendChild(modal)
-                user.style.display = ''
-            } else {
-                galleryDiv.appendChild(user)
-                newModelDiv.appendChild(modal)
-                user.style.display = ''
-            }
+        const modal = document.getElementById(`${user.lastElementChild.firstElementChild.getAttribute('value')} ${user.lastElementChild.firstElementChild.id}`)
+        if (!isVisible) {
+            body.appendChild(modal)
+            body.appendChild(user)
+            user.style.display = 'none'
+
+        } else if (inputSearch.value === "") {
+            galleryDiv.appendChild(user)
+            newModelDiv.appendChild(modal)
+            user.style.display = ''
+        } else {
+            galleryDiv.appendChild(user)
+            newModelDiv.appendChild(modal)
+            user.style.display = ''
+        }
     })
 })
 
