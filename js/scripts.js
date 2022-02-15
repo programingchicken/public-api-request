@@ -7,8 +7,6 @@ let modalCloseBtn = document.querySelectorAll('#modal-close-btn')
 function fetchData(url) {
     return fetch(url)
         .then(res => res.json())
-
-
 }
 
 const script = document.getElementById('script')
@@ -46,147 +44,439 @@ const inputSubmit = document.getElementById('search-submit')
 //generates page info
 function generateInfo(info) {
 
-    //creates card container 
-    const newCard = document.createElement('div')
-    galleryDiv.appendChild(newCard)
-    newCard.setAttribute('class', `card`)
-    newCard.setAttribute('value', `${info.name.first}`)
-
-    //creates img container
-    const cardImgContainer = document.createElement('div')
-    newCard.appendChild(cardImgContainer)
-    cardImgContainer.setAttribute('class', 'card-img-container')
-
-
-    //creates img
-    const newCardImg = document.createElement('img')
-    cardImgContainer.appendChild(newCardImg)
-    newCardImg.setAttribute('class', 'card-img')
-    newCardImg.setAttribute('src', info.picture.thumbnail)
-    newCardImg.setAttribute('alt', 'profile picture')
-
-    //creates info container
-    const cardInfoContainer = document.createElement('div')
-    cardInfoContainer.setAttribute('class', 'card-info-container')
-    newCard.appendChild(cardInfoContainer)
-
-    //creates card name
-    const newCardName = document.createElement('h3')
-    newCardName.setAttribute('class', 'card-name cap')
-    newCardName.textContent = `${info.name.first} ${info.name.last}`
-    newCardName.setAttribute('id', `${info.name.first}`);
-    newCardName.setAttribute('value', `${info.name.last}`);
-    cardInfoContainer.appendChild(newCardName)
+galleryDiv.innerHTML =
+`
+    <div class="card" value="${info[0].name.first}">
+        <div class="card-img-container">
+            <img class="card-img" src="${info[0].picture.thumbnail}" alt="profile picture">
+        </div>
+        <div class="card-info-container">
+            <h3 class="card-name cap" id="${info[0].name.first}" value="${info[0].name.last}">${info[0].name.first} ${info[0].name.last}</h3>
+            <p class="card-text">${info[0].email}</p>
+            <p class="card-text cap">${info[0].location.city}, ${info[0].location.state}</p>
+        </div>
+    </div>
 
 
-    //creates card email 
-    const newEmail = document.createElement('p')
-    newEmail.setAttribute('class', 'card-text')
-    newEmail.textContent = `${info.email}`
-    cardInfoContainer.appendChild(newEmail)
+    <div class="card" value="${info[1].name.first}">
+        <div class="card-img-container">
+            <img class="card-img" src="${info[1].picture.thumbnail}" alt="profile picture">
+        </div>
+        <div class="card-info-container">
+            <h3 class="card-name cap" id="${info[1].name.first}" value="${info[1].name.last}">${info[1].name.first} ${info[1].name.last}</h3>
+            <p class="card-text">${info[1].email}</p>
+            <p class="card-text cap">${info[1].location.city}, ${info[1].location.state}</p>
+        </div>
+    </div>
 
-    //creates card location 
-    const newLocation = document.createElement('p');
-    newLocation.setAttribute('class', 'card-text cap')
-    newLocation.textContent = `${info.location.city}, ${info.location.state}`
-    cardInfoContainer.appendChild(newLocation)
+
+    <div class="card" value="${info[2].name.first}">
+        <div class="card-img-container">
+            <img class="card-img" src="${info[2].picture.thumbnail}" alt="profile picture">
+        </div>
+        <div class="card-info-container">
+            <h3 class="card-name cap" id="${info[2].name.first}" value="${info[2].name.last}">${info[2].name.first} ${info[2].name.last}</h3>
+            <p class="card-text">${info[2].email}</p>
+            <p class="card-text cap">${info[2].location.city}, ${info[2].location.state}</p>
+        </div>
+    </div>
+
+
+    <div class="card" value="${info[3].name.first}">
+        <div class="card-img-container">
+            <img class="card-img" src="${info[3].picture.thumbnail}" alt="profile picture">
+        </div>
+        <div class="card-info-container">
+            <h3 class="card-name cap" id="${info[3].name.first}" value="${info[3].name.last}">${info[3].name.first} ${info[3].name.last}</h3>
+            <p class="card-text">${info[3].email}</p>
+            <p class="card-text cap">${info[3].location.city}, ${info[3].location.state}</p>
+        </div>
+    </div>
+
+    <div class="card" value="${info[4].name.first}">
+        <div class="card-img-container">
+            <img class="card-img" src="${info[4].picture.thumbnail}" alt="profile picture">
+        </div>
+        <div class="card-info-container">
+            <h3 class="card-name cap" id="${info[4].name.first}" value="${info[4].name.last}">${info[4].name.first} ${info[4].name.last}</h3>
+            <p class="card-text">${info[4].email}</p>
+            <p class="card-text cap">${info[4].location.city}, ${info[4].location.state}</p>
+        </div>
+    </div>
+
+
+    <div class="card" value="${info[5].name.first}">
+        <div class="card-img-container">
+            <img class="card-img" src="${info[5].picture.thumbnail}" alt="profile picture">
+        </div>
+        <div class="card-info-container">
+            <h3 class="card-name cap" id="${info[5].name.first}" value="${info[5].name.last}">${info[5].name.first} ${info[5].name.last}</h3>
+            <p class="card-text">${info[5].email}</p>
+            <p class="card-text cap">${info[5].location.city}, ${info[5].location.state}</p>
+        </div>
+    </div>
+
+
+    <div class="card" value="${info[6].name.first}">
+        <div class="card-img-container">
+            <img class="card-img" src="${info[6].picture.thumbnail}" alt="profile picture">
+        </div>
+        <div class="card-info-container">
+            <h3 class="card-name cap" id="${info[6].name.first}" value="${info[6].name.last}">${info[6].name.first} ${info[6].name.last}</h3>
+            <p class="card-text">${info[6].email}</p>
+            <p class="card-text cap">${info[6].location.city}, ${info[6].location.state}</p>
+        </div>
+    </div>
+
+
+    <div class="card" value="${info[7].name.first}">
+        <div class="card-img-container">
+            <img class="card-img" src="${info[7].picture.thumbnail}" alt="profile picture">
+        </div>
+        <div class="card-info-container">
+            <h3 class="card-name cap" id="${info[7].name.first}" value="${info[7].name.last}">${info[7].name.first} ${info[7].name.last}</h3>
+            <p class="card-text">${info[7].email}</p>
+            <p class="card-text cap">${info[7].location.city}, ${info[7].location.state}</p>
+        </div>
+    </div>
+
+
+    <div class="card" value="${info[8].name.first}">
+        <div class="card-img-container">
+            <img class="card-img" src="${info[8].picture.thumbnail}" alt="profile picture">
+        </div>
+        <div class="card-info-container">
+            <h3 class="card-name cap" id="${info[8].name.first}" value="${info[8].name.last}">${info[8].name.first} ${info[8].name.last}</h3>
+            <p class="card-text">${info[8].email}</p>
+            <p class="card-text cap">${info[8].location.city}, ${info[8].location.state}</p>
+        </div>
+    </div>
+
+
+    <div class="card" value="${info[9].name.first}">
+        <div class="card-img-container">
+            <img class="card-img" src="${info[9].picture.thumbnail}" alt="profile picture">
+        </div>
+        <div class="card-info-container">
+            <h3 class="card-name cap" id="${info[9].name.first}" value="${info[9].name.last}">${info[9].name.first} ${info[9].name.last}</h3>
+            <p class="card-text">${info[9].email}</p>
+            <p class="card-text cap">${info[9].location.city}, ${info[9].location.state}</p>
+        </div>
+    </div>
+
+
+    <div class="card" value="${info[10].name.first}">
+        <div class="card-img-container">
+            <img class="card-img" src="${info[10].picture.thumbnail}" alt="profile picture">
+        </div>
+        <div class="card-info-container">
+            <h3 class="card-name cap" id="${info[10].name.first}" value="${info[10].name.last}">${info[10].name.first} ${info[10].name.last}</h3>
+            <p class="card-text">${info[10].email}</p>
+            <p class="card-text cap">${info[10].location.city}, ${info[10].location.state}</p>
+        </div>
+    </div>
+
+
+    <div class="card" value="${info[11].name.first}">
+        <div class="card-img-container">
+            <img class="card-img" src="${info[11].picture.thumbnail}" alt="profile picture">
+        </div>
+        <div class="card-info-container">
+            <h3 class="card-name cap" id="${info[11].name.first}" value="${info[11].name.last}">${info[11].name.first} ${info[11].name.last}</h3>
+            <p class="card-text">${info[11].email}</p>
+            <p class="card-text cap">${info[11].location.city}, ${info[11].location.state}</p>
+        </div>
+    </div>
+`
+
+    // //creates card container 
+    // const newCard = document.createElement('div')
+    // galleryDiv.appendChild(newCard)
+    // newCard.setAttribute('class', `card`)
+    // newCard.setAttribute('value', `${info.name.first}`)
+
+    // //creates img container
+    // const cardImgContainer = document.createElement('div')
+    // newCard.appendChild(cardImgContainer)
+    // cardImgContainer.setAttribute('class', 'card-img-container')
+
+
+    // //creates img
+    // const newCardImg = document.createElement('img')
+    // cardImgContainer.appendChild(newCardImg)
+    // newCardImg.setAttribute('class', 'card-img')
+    // newCardImg.setAttribute('src', info.picture.thumbnail)
+    // newCardImg.setAttribute('alt', 'profile picture')
+
+    // //creates info container
+    // const cardInfoContainer = document.createElement('div')
+    // cardInfoContainer.setAttribute('class', 'card-info-container')
+    // newCard.appendChild(cardInfoContainer)
+
+    // //creates card name
+    // const newCardName = document.createElement('h3')
+    // newCardName.setAttribute('class', 'card-name cap')
+    // newCardName.textContent = `${info.name.first} ${info.name.last}`
+    // newCardName.setAttribute('id', `${info.name.first}`);
+    // newCardName.setAttribute('value', `${info.name.last}`);
+    // cardInfoContainer.appendChild(newCardName)
+
+
+    // //creates card email 
+    // const newEmail = document.createElement('p')
+    // newEmail.setAttribute('class', 'card-text')
+    // newEmail.textContent = `${info.email}`
+    // cardInfoContainer.appendChild(newEmail)
+
+    // //creates card location 
+    // const newLocation = document.createElement('p');
+    // newLocation.setAttribute('class', 'card-text cap')
+    // newLocation.textContent = `${info.location.city}, ${info.location.state}`
+    // cardInfoContainer.appendChild(newLocation)
     generateInfoModal(info);
-    console.log(info.picture.large)
 }
 
 
 //generates person/model info
 function generateInfoModal(info) {
 
-    //creates container and exit button
-    const model = document.createElement('div')
-    newModelDiv.appendChild(model)
-    model.setAttribute('class', 'modal')
-    const button = document.createElement('button')
-    model.appendChild(button)
-    button.setAttribute('type', 'button')
-    button.setAttribute('id', 'modal-close-btn')
-    button.setAttribute('class', 'modal-close-btn')
-    const strong = document.createElement('strong')
-    button.appendChild(strong);
+    newModelDiv.innerHTML =
+`
+        <div class="modal" id="${info[0].name.last} ${info[0].name.first}">
+            <button type="button" id="modal-close-btn" class="modal-close-btn">
+            <strong></strong>
+            </button>
+            <div class="modal-info-container">
+                <img class="modal-img" src="${info[0].picture.thumbnail}" alt="profile picture">
+                <h3 class="${info[0].name.first} ${info[0].name.last}" id="name">${info[0].name.first} ${info[0].name.last}</h3>
+                <p class="modal-text">${info[0].email}</p>
+                <p class="modal-text cap">${info[0].location.city}</p>
+                <p class="modal-text">${info[0].phone}</p>
+                <p class="modal-text">${info[0].location.street.number} ${info[0].location.street.name}, ${info[0].location.state}, ${info[0].location.postcode}</p>
+                <p class="modal-text">${info[0].dob.date}</p>
+            </div>
+            <div class="modal-btn-container">
+                <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
+                <button class="modal-next btn" id="modal-next" type="button">NEXT</button>
+            </div>
+        </div>
+
+        <div class="modal" id="${info[1].name.last} ${info[1].name.first}">
+            <button type="button" id="modal-close-btn" class="modal-close-btn">
+            <strong></strong>
+            </button>
+            <div class="modal-info-container">
+                <img class="modal-img" src="${info[1].picture.thumbnail}" alt="profile picture">
+                <h3 class="${info[1].name.first} ${info[1].name.last}" id="name">${info[1].name.first} ${info[1].name.last}</h3>
+                <p class="modal-text">${info[1].email}</p>
+                <p class="modal-text cap">${info[1].location.city}</p>
+                <p class="modal-text">${info[1].phone}</p>
+                <p class="modal-text">${info[1].location.street.number} ${info[1].location.street.name}, ${info[1].location.state}, ${info[1].location.postcode}</p>
+                <p class="modal-text">${info[1].dob.date}</p>
+            </div>
+            <div class="modal-btn-container">
+                <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
+                <button class="modal-next btn" id="modal-next" type="button">NEXT</button>
+            </div>
+        </div>
 
 
+        <div class="modal" id="${info[2].name.last} ${info[2].name.first}">
+            <button type="button" id="modal-close-btn" class="modal-close-btn">
+            <strong></strong>
+            </button>
+            <div class="modal-info-container">
+                <img class="modal-img" src="${info[2].picture.thumbnail}" alt="profile picture">
+                <h3 class="${info[2].name.first} ${info[2].name.last}" id="name">${info[2].name.first} ${info[2].name.last}</h3>
+                <p class="modal-text">${info[2].email}</p>
+                <p class="modal-text cap">${info[2].location.city}</p>
+                <p class="modal-text">${info[2].phone}</p>
+                <p class="modal-text">${info[2].location.street.number} ${info[2].location.street.name}, ${info[2].location.state}, ${info[2].location.postcode}</p>
+                <p class="modal-text">${info[2].dob.date}</p>
+            </div>
+            <div class="modal-btn-container">
+                <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
+                <button class="modal-next btn" id="modal-next" type="button">NEXT</button>
+            </div>
+        </div>
 
-    //creates model container
-    const newModelContainer = document.createElement('div')
-    model.appendChild(newModelContainer)
-    newModelContainer.setAttribute('class', 'modal-info-container')
+        <div class="modal" id="${info[3].name.last} ${info[3].name.first}">
+            <button type="button" id="modal-close-btn" class="modal-close-btn">
+            <strong></strong>
+            </button>
+            <div class="modal-info-container">
+                <img class="modal-img" src="${info[3].picture.thumbnail}" alt="profile picture">
+                <h3 class="${info[3].name.first} ${info[3].name.last}" id="name">${info[3].name.first} ${info[3].name.last}</h3>
+                <p class="modal-text">${info[3].email}</p>
+                <p class="modal-text cap">${info[3].location.city}</p>
+                <p class="modal-text">${info[3].phone}</p>
+                <p class="modal-text">${info[3].location.street.number} ${info[3].location.street.name}, ${info[3].location.state}, ${info[3].location.postcode}</p>
+                <p class="modal-text">${info[3].dob.date}</p>
+            </div>
+            <div class="modal-btn-container">
+                <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
+                <button class="modal-next btn" id="modal-next" type="button">NEXT</button>
+            </div>
+        </div>
 
-    // creates img in model card
-    const modelImg = document.createElement('img')
-    newModelContainer.appendChild(modelImg)
-    modelImg.setAttribute('class', 'modal-img')
-    modelImg.setAttribute('src', info.picture.medium)
-    modelImg.setAttribute('alt', 'profile picture')
+        <div class="modal" id="${info[4].name.last} ${info[4].name.first}">
+            <button type="button" id="modal-close-btn" class="modal-close-btn">
+            <strong></strong>
+            </button>
+            <div class="modal-info-container">
+                <img class="modal-img" src="${info[4].picture.thumbnail}" alt="profile picture">
+                <h3 class="${info[4].name.first} ${info[4].name.last}" id="name">${info[4].name.first} ${info[4].name.last}</h3>
+                <p class="modal-text">${info[4].email}</p>
+                <p class="modal-text cap">${info[4].location.city}</p>
+                <p class="modal-text">${info[4].phone}</p>
+                <p class="modal-text">${info[4].location.street.number} ${info[4].location.street.name}, ${info[4].location.state}, ${info[4].location.postcode}</p>
+                <p class="modal-text">${info[4].dob.date}</p>
+            </div>
+            <div class="modal-btn-container">
+                <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
+                <button class="modal-next btn" id="modal-next" type="button">NEXT</button>
+            </div>
+        </div>
 
-    // creates name in model
-    const name = document.createElement('h3')
-    name.setAttribute('class', 'modal-name cap')
-    name.setAttribute('class', `${info.name.first} ${info.name.last}`)
-    name.textContent = `${info.name.first} ${info.name.last}`
-    name.setAttribute('id', `name`);
-    model.setAttribute('id', `${info.name.last} ${info.name.first}`);
-    newModelContainer.appendChild(name)
+        <div class="modal" id="${info[5].name.last} ${info[5].name.first}">
+            <button type="button" id="modal-close-btn" class="modal-close-btn">
+            <strong></strong>
+            </button>
+            <div class="modal-info-container">
+                <img class="modal-img" src="${info[5].picture.thumbnail}" alt="profile picture">
+                <h3 class="${info[5].name.first} ${info[5].name.last}" id="name">${info[5].name.first} ${info[5].name.last}</h3>
+                <p class="modal-text">${info[5].email}</p>
+                <p class="modal-text cap">${info[5].location.city}</p>
+                <p class="modal-text">${info[5].phone}</p>
+                <p class="modal-text">${info[5].location.street.number} ${info[5].location.street.name}, ${info[5].location.state}, ${info[5].location.postcode}</p>
+                <p class="modal-text">${info[5].dob.date}</p>
+            </div>
+            <div class="modal-btn-container">
+                <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
+                <button class="modal-next btn" id="modal-next" type="button">NEXT</button>
+            </div>
+        </div>
+
+        <div class="modal" id="${info[6].name.last} ${info[6].name.first}">
+            <button type="button" id="modal-close-btn" class="modal-close-btn">
+            <strong></strong>
+            </button>
+            <div class="modal-info-container">
+                <img class="modal-img" src="${info[6].picture.thumbnail}" alt="profile picture">
+                <h3 class="${info[6].name.first} ${info[6].name.last}" id="name">${info[6].name.first} ${info[6].name.last}</h3>
+                <p class="modal-text">${info[6].email}</p>
+                <p class="modal-text cap">${info[6].location.city}</p>
+                <p class="modal-text">${info[6].phone}</p>
+                <p class="modal-text">${info[6].location.street.number} ${info[6].location.street.name}, ${info[6].location.state}, ${info[6].location.postcode}</p>
+                <p class="modal-text">${info[6].dob.date}</p>
+            </div>
+            <div class="modal-btn-container">
+                <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
+                <button class="modal-next btn" id="modal-next" type="button">NEXT</button>
+            </div>
+        </div>
+
+        <div class="modal" id="${info[7].name.last} ${info[7].name.first}">
+            <button type="button" id="modal-close-btn" class="modal-close-btn">
+            <strong></strong>
+            </button>
+            <div class="modal-info-container">
+                <img class="modal-img" src="${info[7].picture.thumbnail}" alt="profile picture">
+                <h3 class="${info[7].name.first} ${info[7].name.last}" id="name">${info[7].name.first} ${info[7].name.last}</h3>
+                <p class="modal-text">${info[7].email}</p>
+                <p class="modal-text cap">${info[7].location.city}</p>
+                <p class="modal-text">${info[7].phone}</p>
+                <p class="modal-text">${info[7].location.street.number} ${info[7].location.street.name}, ${info[7].location.state}, ${info[7].location.postcode}</p>
+                <p class="modal-text">${info[7].dob.date}</p>
+            </div>
+            <div class="modal-btn-container">
+                <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
+                <button class="modal-next btn" id="modal-next" type="button">NEXT</button>
+            </div>
+        </div>
+
+        <div class="modal" id="${info[8].name.last} ${info[8].name.first}">
+            <button type="button" id="modal-close-btn" class="modal-close-btn">
+            <strong></strong>
+            </button>
+            <div class="modal-info-container">
+                <img class="modal-img" src="${info[8].picture.thumbnail}" alt="profile picture">
+                <h3 class="${info[8].name.first} ${info[8].name.last}" id="name">${info[8].name.first} ${info[8].name.last}</h3>
+                <p class="modal-text">${info[8].email}</p>
+                <p class="modal-text cap">${info[8].location.city}</p>
+                <p class="modal-text">${info[8].phone}</p>
+                <p class="modal-text">${info[8].location.street.number} ${info[8].location.street.name}, ${info[8].location.state}, ${info[8].location.postcode}</p>
+                <p class="modal-text">${info[8].dob.date}</p>
+            </div>
+            <div class="modal-btn-container">
+                <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
+                <button class="modal-next btn" id="modal-next" type="button">NEXT</button>
+            </div>
+        </div>
+
+        <div class="modal" id="${info[9].name.last} ${info[9].name.first}">
+            <button type="button" id="modal-close-btn" class="modal-close-btn">
+            <strong></strong>
+            </button>
+            <div class="modal-info-container">
+                <img class="modal-img" src="${info[9].picture.thumbnail}" alt="profile picture">
+                <h3 class="${info[9].name.first} ${info[9].name.last}" id="name">${info[9].name.first} ${info[9].name.last}</h3>
+                <p class="modal-text">${info[9].email}</p>
+                <p class="modal-text cap">${info[9].location.city}</p>
+                <p class="modal-text">${info[9].phone}</p>
+                <p class="modal-text">${info[9].location.street.number} ${info[9].location.street.name}, ${info[9].location.state}, ${info[9].location.postcode}</p>
+                <p class="modal-text">${info[9].dob.date}</p>
+            </div>
+            <div class="modal-btn-container">
+                <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
+                <button class="modal-next btn" id="modal-next" type="button">NEXT</button>
+            </div>
+        </div>
+
+        <div class="modal" id="${info[10].name.last} ${info[10].name.first}">
+            <button type="button" id="modal-close-btn" class="modal-close-btn">
+            <strong></strong>
+            </button>
+            <div class="modal-info-container">
+                <img class="modal-img" src="${info[10].picture.thumbnail}" alt="profile picture">
+                <h3 class="${info[10].name.first} ${info[10].name.last}" id="name">${info[10].name.first} ${info[10].name.last}</h3>
+                <p class="modal-text">${info[10].email}</p>
+                <p class="modal-text cap">${info[10].location.city}</p>
+                <p class="modal-text">${info[10].phone}</p>
+                <p class="modal-text">${info[10].location.street.number} ${info[10].location.street.name}, ${info[10].location.state}, ${info[10].location.postcode}</p>
+                <p class="modal-text">${info[10].dob.date}</p>
+            </div>
+            <div class="modal-btn-container">
+                <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
+                <button class="modal-next btn" id="modal-next" type="button">NEXT</button>
+            </div>
+        </div>
 
 
-    //creates email in model
-    const email = document.createElement('p')
-    email.textContent = info.email
-    newModelContainer.appendChild(email)
-    email.setAttribute('class', 'modal-text')
-
-    //creates city in model
-    const city = document.createElement('p')
-    city.textContent = info.location.city
-    newModelContainer.appendChild(city)
-    city.setAttribute('class', 'modal-text cap')
-
-    //creates phone in model
-    const phone = document.createElement('p')
-    phone.textContent = info.phone
-    phone.setAttribute('class', 'modal-text')
-    newModelContainer.appendChild(phone)
-
-    //creates address in model
-    const address = document.createElement('p')
-    address.textContent = `${info.location.street.number} ${info.location.street.name}, ${info.location.state}, ${info.location.postcode}`
-    address.setAttribute('class', 'modal-text')
-    newModelContainer.appendChild(address)
-
-    //creates birthday in model
-    const birthDay = document.createElement('p')
-    const dob = JSON.stringify(info.dob.date)
-
-    console.log(info.dob.date)
-    birthDay.textContent = dob.slice(1, 11)
-    birthDay.setAttribute('class', 'modal-text')
-    newModelContainer.appendChild(birthDay)
-
-    //next and past
-    const nextPastDiv = document.createElement('div')
-    const next = document.createElement('button')
-    const past = document.createElement('button')
-    next.textContent = "NEXT"
-    past.textContent = "PREV"
-    nextPastDiv.setAttribute('class', 'modal-btn-container')
-    past.setAttribute('class', 'modal-prev btn')
-    past.setAttribute('id', 'modal-prev')
-    past.setAttribute('type', 'button')
-    next.setAttribute('class', 'modal-next btn')
-    next.setAttribute('id', 'modal-next')
-    next.setAttribute('type', 'button')
-    model.appendChild(nextPastDiv)
-    nextPastDiv.appendChild(past)
-    nextPastDiv.appendChild(next)
-
-
+        <div class="modal" id="${info[11].name.last} ${info[11].name.first}">
+            <button type="button" id="modal-close-btn" class="modal-close-btn">
+            <strong></strong>
+            </button>
+            <div class="modal-info-container">
+                <img class="modal-img" src="${info[11].picture.thumbnail}" alt="profile picture">
+                <h3 class="${info[11].name.first} ${info[11].name.last}" id="name">${info[11].name.first} ${info[11].name.last}</h3>
+                <p class="modal-text">${info[11].email}</p>
+                <p class="modal-text cap">${info[11].location.city}</p>
+                <p class="modal-text">${info[11].phone}</p>
+                <p class="modal-text">${info[11].location.street.number} ${info[11].location.street.name}, ${info[11].location.state}, ${info[11].location.postcode}</p>
+                <p class="modal-text">${info[11].dob.date}</p>
+            </div>
+            <div class="modal-btn-container">
+                <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
+                <button class="modal-next btn" id="modal-next" type="button">NEXT</button>
+            </div>
+        </div>
+`
+const model = document.querySelectorAll(".modal")
     newModelDiv.style.display = 'none'
-    model.style.display = 'none'
+    model.forEach(element => {
+        element.style.display = "none"
+    })
 }
 
 //generates info from profile api
@@ -197,37 +487,52 @@ async function profile(url) {
     //gets all 12 profiles
     await fetchData(url)
         .then(data => arr = data.results)
-    arr.forEach(data => {
-        console.log(arr[i])
-        generateInfo(arr[i])
-        i++
-    })
-    galleryDiv.style.display = ""
+    generateInfo(arr)
+
+
+    // arr.forEach(data => {
+    //     console.log(arr[i])
+    //     generateInfo(arr[i])
+    //     i++
+    // })
+        galleryDiv.style.display = ""
 }
 profile('https://randomuser.me/api/?results=12')
 
 
 //click on the card EventListener
 galleryDiv.addEventListener('click', (e) => {
+
+
+
+//[----------------------------]
+//fix geting name from modal
+//[----------------------------]
+
+
+
+
     const card = e.target;
     //card 
     if (card.className === 'card') {
-        const cardImgContainer = card.childNodes[0]
-        const cardInfoContainer = card.childNodes[1]
-        const name = cardInfoContainer.childNodes[0]
-        const first = name.textContent.split(' ')[0]
-        const last = name.textContent.split(' ')[1]
-        const modal = document.getElementById(`${last} ${first}`)
+        const cardInfoContainer = card.lastElementChild
+        const name = cardInfoContainer.firstElementChild
+        console.log(name.textContent)
+        const splitName = name.textContent.split(' ')
+        console.log(`${splitName[1]} ${splitName[0]}`)
+
+        const modal = document.getElementById(`${splitName[1]} ${splitName[0]}`)
         newModelDiv.style.display = ''
         modal.style.display = '';
         console.log('yay')
 
         //info container
     } else if (card.className === 'card-info-container') {
-        const name = card.childNodes[0]
-        const first = name.textContent.split(' ')[0]
-        const last = name.textContent.split(' ')[1]
-        const modal = document.getElementById(`${last} ${first}`)
+        const name = card.firstElementChild
+        const splitName = name.textContent.split(' ')
+        console.log(`${splitName[1]} ${splitName[0]}`)
+        console.log(name.textContent)
+        const modal = document.getElementById(`${splitName[1]} ${splitName[0]}`)
         newModelDiv.style.display = ''
         modal.style.display = '';
         console.log('yay')
@@ -235,11 +540,12 @@ galleryDiv.addEventListener('click', (e) => {
         //img container
     } else if (card.className === 'card-img-container') {
         const cardContainer = card.parentNode
-        const cardInfoContainer = cardContainer.childNodes[1]
-        const name = cardInfoContainer.childNodes[0]
-        const first = name.textContent.split(' ')[0]
-        const last = name.textContent.split(' ')[1]
-        const modal = document.getElementById(`${last} ${first}`)
+        const cardInfoContainer = cardContainer.lastElementChild
+        const name = cardInfoContainer.firstElementChild
+        console.log(name.textContent)
+        const splitName = name.textContent.split(' ')
+        console.log(`${splitName[1]} ${splitName[0]}`)
+        const modal = document.getElementById(`${splitName[1]} ${splitName[0]}`)
         newModelDiv.style.display = ''
         modal.style.display = '';
         console.log('yay')
@@ -248,11 +554,13 @@ galleryDiv.addEventListener('click', (e) => {
     } else if (card.className === 'card-img') {
         const cardImgContainer = card.parentNode
         const cardContainer = cardImgContainer.parentNode
-        const cardInfoContainer = cardContainer.childNodes[1]
-        const name = cardInfoContainer.childNodes[0]
-        const first = name.textContent.split(' ')[0]
-        const last = name.textContent.split(' ')[1]
-        const modal = document.getElementById(`${last} ${first}`)
+        const cardInfoContainer = cardContainer.lastElementChild
+        const name = cardInfoContainer.firstElementChild
+        console.log(name.textContent)
+        const splitName = name.textContent.split(' ')
+        console.log(`${splitName[1]} ${splitName[0]}`)
+
+        const modal = document.getElementById(`${splitName[1]} ${splitName[0]}`)
         newModelDiv.style.display = ''
         modal.style.display = '';
         console.log('yay')
@@ -260,10 +568,12 @@ galleryDiv.addEventListener('click', (e) => {
         //name
     } else if (card.className === 'card-name cap') {
         const cardInfoContainer = card.parentNode
-        const name = cardInfoContainer.childNodes[0]
-        const first = name.textContent.split(' ')[0]
-        const last = name.textContent.split(' ')[1]
-        const modal = document.getElementById(`${last} ${first}`)
+        const name = cardInfoContainer.firstElementChild
+        const splitName = name.textContent.split(' ')
+        console.log(name.textContent)
+        console.log(`${splitName[1]} ${splitName[0]}`)
+
+        const modal = document.getElementById(`${splitName[1]} ${splitName[0]}`)
         newModelDiv.style.display = ''
         modal.style.display = '';
         console.log('yay')
@@ -271,22 +581,23 @@ galleryDiv.addEventListener('click', (e) => {
         //email
     } else if (card.className === 'card-text') {
         const cardInfoContainer = card.parentNode
-        const name = cardInfoContainer.childNodes[0]
-        const first = name.textContent.split(' ')[0]
-        const last = name.textContent.split(' ')[1]
-        const modal = document.getElementById(`${last} ${first}`)
+        const name = cardInfoContainer.firstElementChild
+        console.log(name.textContent)
+        const splitName = name.textContent.split(' ')
+        console.log(`${splitName[1]} ${splitName[0]}`)
+
+        const modal = document.getElementById(`${splitName[1]} ${splitName[0]}`)
         newModelDiv.style.display = ''
         modal.style.display = '';
         console.log('yay')
-
         //location
     } else if (card.className === 'card-text cap') {
         const cardInfoContainer = card.parentNode
-        const name = cardInfoContainer.childNodes[0]
-        const first = name.textContent.split(' ')[0]
-        const last = name.textContent.split(' ')[1]
-        const modal = document.getElementById(`${last} ${first}`)
-
+        const name = cardInfoContainer.firstElementChild
+        console.log(name.textContent)
+        const splitName = name.textContent.split(' ')
+        const modal = document.getElementById(`${splitName[1]} ${splitName[0]}`)
+        console.log(`${splitName[1]} ${splitName[0]}`)
         newModelDiv.style.display = ''
         modal.style.display = '';
         console.log('yay')
