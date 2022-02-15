@@ -273,3 +273,7 @@ header {
 #body {
     background-color: grey;
 }
+
+h3 {
+    font-family: serif;
+}
