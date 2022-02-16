@@ -93,14 +93,14 @@ galleryDiv.innerHTML =
         </div>
     </div>
 
-    <div class="card" value="${info[4].name.first}">
+    <div class="card" value="${info[5].name.first}">
         <div class="card-img-container">
-            <img class="card-img" src="${info[4].picture.thumbnail}" alt="profile picture">
+            <img class="card-img" src="${info[5].picture.thumbnail}" alt="profile picture">
         </div>
         <div class="card-info-container">
-            <h3 class="card-name cap" id="${info[4].name.first}" value="${info[4].name.last}">${info[4].name.first} ${info[4].name.last}</h3>
-            <p class="card-text">${info[4].email}</p>
-            <p class="card-text cap">${info[4].location.city}, ${info[4].location.state}</p>
+            <h3 class="card-name cap" id="${info[5].name.first}" value="${info[5].name.last}">${info[5].name.first} ${info[5].name.last}</h3>
+            <p class="card-text">${info[5].email}</p>
+            <p class="card-text cap">${info[5].location.city}, ${info[5].location.state}</p>
         </div>
     </div>
 
@@ -253,7 +253,7 @@ function generateInfoModal(info) {
                 <p class="modal-text cap">${info[0].location.city}</p>
                 <p class="modal-text">${info[0].phone}</p>
                 <p class="modal-text">${info[0].location.street.number} ${info[0].location.street.name}, ${info[0].location.state}, ${info[0].location.postcode}</p>
-                <p class="modal-text">${info[0].dob.date.slice(0,10).replace(/-/g,"/").split("/").reverse().join('/')}</p>
+                <p class="modal-text">${`${info[11].dob.date.slice(5,10).replace(/-/g,"/")}/${new Date(info[11].dob.date.slice(0,10)).getUTCFullYear()}`}</p>
             </div>
             <div class="modal-btn-container">
                 <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
@@ -272,7 +272,7 @@ function generateInfoModal(info) {
                 <p class="modal-text cap">${info[1].location.city}</p>
                 <p class="modal-text">${info[1].phone}</p>
                 <p class="modal-text">${info[1].location.street.number} ${info[1].location.street.name}, ${info[1].location.state}, ${info[1].location.postcode}</p>
-                <p class="modal-text">${info[1].dob.date.slice(0,10).replace(/-/g,"/").split("/").reverse().join('/')}</p>
+                <p class="modal-text">${`${info[1].dob.date.slice(5,10).replace(/-/g,"/")}/${new Date(info[1].dob.date.slice(0,10)).getUTCFullYear()}`}</p>
             </div>
             <div class="modal-btn-container">
                 <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
@@ -292,7 +292,7 @@ function generateInfoModal(info) {
                 <p class="modal-text cap">${info[2].location.city}</p>
                 <p class="modal-text">${info[2].phone}</p>
                 <p class="modal-text">${info[2].location.street.number} ${info[2].location.street.name}, ${info[2].location.state}, ${info[2].location.postcode}</p>
-                <p class="modal-text">${info[2].dob.date.slice(0,10).replace(/-/g,"/").split("/").reverse().join('/')}</p>
+                <p class="modal-text">${`${info[2].dob.date.slice(5,10).replace(/-/g,"/")}/${new Date(info[2].dob.date.slice(0,10)).getUTCFullYear()}`}</p>
             </div>
             <div class="modal-btn-container">
                 <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
@@ -311,7 +311,7 @@ function generateInfoModal(info) {
                 <p class="modal-text cap">${info[3].location.city}</p>
                 <p class="modal-text">${info[3].phone}</p>
                 <p class="modal-text">${info[3].location.street.number} ${info[3].location.street.name}, ${info[3].location.state}, ${info[3].location.postcode}</p>
-                <p class="modal-text">${info[3].dob.date.slice(0,10).replace(/-/g,"/").split("/").reverse().join('/')}</p>
+                <p class="modal-text">${`${info[3].dob.date.slice(5,10).replace(/-/g,"/")}/${new Date(info[3].dob.date.slice(0,10)).getUTCFullYear()}`}</p>
             </div>
             <div class="modal-btn-container">
                 <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
@@ -330,7 +330,7 @@ function generateInfoModal(info) {
                 <p class="modal-text cap">${info[4].location.city}</p>
                 <p class="modal-text">${info[4].phone}</p>
                 <p class="modal-text">${info[4].location.street.number} ${info[4].location.street.name}, ${info[4].location.state}, ${info[4].location.postcode}</p>
-                <p class="modal-text">${info[4].dob.date.slice(0,10).replace(/-/g,"/").split("/").reverse().join('/')}</p>
+                <p class="modal-text">${`${info[4].dob.date.slice(5,10).replace(/-/g,"/")}/${new Date(info[4].dob.date.slice(0,10)).getUTCFullYear()}`}</p>
             </div>
             <div class="modal-btn-container">
                 <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
@@ -349,7 +349,7 @@ function generateInfoModal(info) {
                 <p class="modal-text cap">${info[5].location.city}</p>
                 <p class="modal-text">${info[5].phone}</p>
                 <p class="modal-text">${info[5].location.street.number} ${info[5].location.street.name}, ${info[5].location.state}, ${info[5].location.postcode}</p>
-                <p class="modal-text">${info[5].dob.date.slice(0,10).replace(/-/g,"/").split("/").reverse().join('/')}</p>
+                <p class="modal-text">${`${info[5].dob.date.slice(5,10).replace(/-/g,"/")}/${new Date(info[5].dob.date.slice(0,10)).getUTCFullYear()}`}</p>
             </div>
             <div class="modal-btn-container">
                 <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
@@ -368,7 +368,7 @@ function generateInfoModal(info) {
                 <p class="modal-text cap">${info[6].location.city}</p>
                 <p class="modal-text">${info[6].phone}</p>
                 <p class="modal-text">${info[6].location.street.number} ${info[6].location.street.name}, ${info[6].location.state}, ${info[6].location.postcode}</p>
-                <p class="modal-text">${info[6].dob.date.slice(0,10).replace(/-/g,"/").split("/").reverse().join('/')}</p>
+                <p class="modal-text">${`${info[6].dob.date.slice(5,10).replace(/-/g,"/")}/${new Date(info[6].dob.date.slice(0,10)).getUTCFullYear()}`}</p>
             </div>
             <div class="modal-btn-container">
                 <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
@@ -387,7 +387,7 @@ function generateInfoModal(info) {
                 <p class="modal-text cap">${info[7].location.city}</p>
                 <p class="modal-text">${info[7].phone}</p>
                 <p class="modal-text">${info[7].location.street.number} ${info[7].location.street.name}, ${info[7].location.state}, ${info[7].location.postcode}</p>
-                <p class="modal-text">${info[7].dob.date.slice(0,10).replace(/-/g,"/").split("/").reverse().join('/')}</p>
+                <p class="modal-text">${`${info[7].dob.date.slice(5,10).replace(/-/g,"/")}/${new Date(info[7].dob.date.slice(0,10)).getUTCFullYear()}`}</p>
             </div>
             <div class="modal-btn-container">
                 <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
@@ -406,7 +406,7 @@ function generateInfoModal(info) {
                 <p class="modal-text cap">${info[8].location.city}</p>
                 <p class="modal-text">${info[8].phone}</p>
                 <p class="modal-text">${info[8].location.street.number} ${info[8].location.street.name}, ${info[8].location.state}, ${info[8].location.postcode}</p>
-                <p class="modal-text">${info[8].dob.date.slice(0,10).replace(/-/g,"/").split("/").reverse().join('/')}</p>
+                <p class="modal-text">${`${info[8].dob.date.slice(5,10).replace(/-/g,"/")}/${new Date(info[8].dob.date.slice(0,10)).getUTCFullYear()}`}</p>
             </div>
             <div class="modal-btn-container">
                 <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
@@ -425,7 +425,7 @@ function generateInfoModal(info) {
                 <p class="modal-text cap">${info[9].location.city}</p>
                 <p class="modal-text">${info[9].phone}</p>
                 <p class="modal-text">${info[9].location.street.number} ${info[9].location.street.name}, ${info[9].location.state}, ${info[9].location.postcode}</p>
-                <p class="modal-text">${info[9].dob.date.slice(0,10).replace(/-/g,"/").split("/").reverse().join('/')}</p>
+                <p class="modal-text">${`${info[9].dob.date.slice(5,10).replace(/-/g,"/")}/${new Date(info[9].dob.date.slice(0,10)).getUTCFullYear()}`}</p>
             </div>
             <div class="modal-btn-container">
                 <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
@@ -444,7 +444,7 @@ function generateInfoModal(info) {
                 <p class="modal-text cap">${info[10].location.city}</p>
                 <p class="modal-text">${info[10].phone}</p>
                 <p class="modal-text">${info[10].location.street.number} ${info[10].location.street.name}, ${info[10].location.state}, ${info[10].location.postcode}</p>
-                <p class="modal-text">${info[10].dob.date.slice(0,10).replace(/-/g,"/").split("/").reverse().join('/')}</p>
+                <p class="modal-text">${`${info[10].dob.date.slice(5,10).replace(/-/g,"/")}/${new Date(info[10].dob.date.slice(0,10)).getUTCFullYear()}`}</p>
             </div>
             <div class="modal-btn-container">
                 <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
@@ -464,7 +464,7 @@ function generateInfoModal(info) {
                 <p class="modal-text cap">${info[11].location.city}</p>
                 <p class="modal-text">${info[11].phone}</p>
                 <p class="modal-text">${info[11].location.street.number} ${info[11].location.street.name}, ${info[11].location.state}, ${info[11].location.postcode}</p>
-                <p class="modal-text">${info[11].dob.date.slice(0,10).replace(/-/g,"/").split("/").reverse().join('/')}</p>
+                <p class="modal-text">${`${info[11].dob.date.slice(5,10).replace(/-/g,"/")}/${new Date(info[11].dob.date.slice(0,10)).getUTCFullYear()}`}</p>
             </div>
             <div class="modal-btn-container">
                 <button class="modal-prev btn" id="modal-prev" type="button">PREV</button>
